@@ -86,15 +86,28 @@ jobs:
               }
             `;
 
-            const streakRangeResponse = await github.graphql(streakRangeQuery, {
-              login,
-              from: `${oldestYear}-01-01T00:00:00Z`,
-              to: now.toISOString()
-            });
+            const mergedDaysByDate = new Map();
+            for (let year = oldestYear; year <= currentYear; year += 1) {
+              const from = `${year}-01-01T00:00:00Z`;
+              const to = year === currentYear
+                ? now.toISOString()
+                : `${year}-12-31T23:59:59Z`;
 
-            const allDays = streakRangeResponse.user.contributionsCollection.contributionCalendar.weeks
-              .flatMap((week) => week.contributionDays)
-              .filter((day) => new Date(day.date) <= now)
+              const streakRangeResponse = await github.graphql(streakRangeQuery, { login, from, to });
+              const yearDays = streakRangeResponse.user.contributionsCollection.contributionCalendar.weeks
+                .flatMap((week) => week.contributionDays)
+                .filter((day) => new Date(day.date) <= now);
+
+              for (const day of yearDays) {
+                const existing = mergedDaysByDate.get(day.date) || 0;
+                if (day.contributionCount > existing) {
+                  mergedDaysByDate.set(day.date, day.contributionCount);
+                }
+              }
+            }
+
+            const allDays = Array.from(mergedDaysByDate.entries())
+              .map(([date, contributionCount]) => ({ date, contributionCount }))
               .sort((a, b) => new Date(a.date) - new Date(b.date));
 
             const dayMs = 24 * 60 * 60 * 1000;
