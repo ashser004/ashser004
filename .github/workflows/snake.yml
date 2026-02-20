@@ -54,33 +54,127 @@ jobs:
               counts.push(await getYearCount(year));
             }
 
-            const card = (year, count, index) => {
+            const yearsQuery = `
+              query ($login: String!) {
+                user(login: $login) {
+                  contributionsCollection {
+                    contributionYears
+                  }
+                }
+              }
+            `;
+            const yearsResponse = await github.graphql(yearsQuery, { login });
+            const contributionYears = (yearsResponse.user.contributionsCollection.contributionYears || []).map(Number);
+            const oldestYear = contributionYears.length > 0
+              ? Math.min(...contributionYears)
+              : currentYear;
+
+            const streakRangeQuery = `
+              query ($login: String!, $from: DateTime!, $to: DateTime!) {
+                user(login: $login) {
+                  contributionsCollection(from: $from, to: $to) {
+                    contributionCalendar {
+                      weeks {
+                        contributionDays {
+                          date
+                          contributionCount
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            `;
+
+            const streakRangeResponse = await github.graphql(streakRangeQuery, {
+              login,
+              from: `${oldestYear}-01-01T00:00:00Z`,
+              to: now.toISOString()
+            });
+
+            const allDays = streakRangeResponse.user.contributionsCollection.contributionCalendar.weeks
+              .flatMap((week) => week.contributionDays)
+              .filter((day) => new Date(day.date) <= now)
+              .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            const dayMs = 24 * 60 * 60 * 1000;
+            const normalize = (dateValue) => {
+              const date = new Date(dateValue);
+              return Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
+            };
+
+            let longestStreak = 0;
+            let currentRun = 0;
+            let previousDate = null;
+
+            for (const day of allDays) {
+              const dayDate = normalize(day.date);
+              if (day.contributionCount > 0) {
+                if (previousDate !== null && dayDate - previousDate === dayMs) {
+                  currentRun += 1;
+                } else {
+                  currentRun = 1;
+                }
+                previousDate = dayDate;
+                if (currentRun > longestStreak) {
+                  longestStreak = currentRun;
+                }
+              } else {
+                currentRun = 0;
+                previousDate = null;
+              }
+            }
+
+            const contributionMap = new Map(allDays.map((day) => [normalize(day.date), day.contributionCount]));
+            const todayUtc = normalize(now);
+            let currentStreak = 0;
+            let cursor = todayUtc;
+            while ((contributionMap.get(cursor) || 0) > 0) {
+              currentStreak += 1;
+              cursor -= dayMs;
+            }
+
+            const yearCard = (year, count, index) => {
               const begin = `${index * 4}s`;
               return `
-                <g opacity="0">
-                  <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.08;0.30;0.38;1" dur="12s" begin="${begin}" repeatCount="indefinite" />
-                  <text x="450" y="90" text-anchor="middle" font-size="44" font-family="Segoe UI, Arial, sans-serif" fill="#70a5fd" font-weight="700">${year}</text>
-                  <text x="450" y="160" text-anchor="middle" font-size="74" font-family="Segoe UI, Arial, sans-serif" fill="#c792ea" font-weight="800">${count}</text>
-                  <text x="450" y="215" text-anchor="middle" font-size="28" font-family="Segoe UI, Arial, sans-serif" fill="#38bdae">contributions</text>
+                <g visibility="hidden">
+                  <animate attributeName="visibility" values="hidden;visible;visible;hidden" keyTimes="0;0.001;0.333;0.334" calcMode="discrete" dur="12s" begin="${begin}" repeatCount="indefinite" />
+                  <animateTransform attributeName="transform" type="translate" values="24 0;0 0;0 0;-24 0" keyTimes="0;0.1;0.9;1" dur="4s" begin="${begin}" repeatCount="indefinite" />
+                  <text x="260" y="140" text-anchor="middle" font-size="44" font-family="Segoe UI, Arial, sans-serif" fill="#70a5fd" font-weight="700">${year}</text>
+                  <text x="260" y="210" text-anchor="middle" font-size="74" font-family="Segoe UI, Arial, sans-serif" fill="#c792ea" font-weight="800">${count}</text>
+                  <text x="260" y="252" text-anchor="middle" font-size="26" font-family="Segoe UI, Arial, sans-serif" fill="#38bdae">contributions</text>
                 </g>
               `;
             };
 
             const svg = `
-              <svg xmlns="http://www.w3.org/2000/svg" width="900" height="280" viewBox="0 0 900 280" role="img" aria-labelledby="title desc">
-                <title id="title">Yearly GitHub Contributions</title>
-                <desc id="desc">Animated yearly contribution totals for ${login}</desc>
+              <svg xmlns="http://www.w3.org/2000/svg" width="920" height="320" viewBox="0 0 920 320" role="img" aria-labelledby="title desc">
+                <title id="title">GitHub activity summary</title>
+                <desc id="desc">Animated yearly contribution totals and streak statistics for ${login}</desc>
                 <defs>
                   <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
                     <stop offset="0%" stop-color="#1a1b27" />
                     <stop offset="100%" stop-color="#0f111a" />
                   </linearGradient>
+                  <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#1f2233" />
+                    <stop offset="100%" stop-color="#161b2e" />
+                  </linearGradient>
                 </defs>
-                <rect x="0" y="0" width="900" height="280" rx="20" fill="url(#bg)" />
-                <text x="450" y="42" text-anchor="middle" font-size="26" font-family="Segoe UI, Arial, sans-serif" fill="#70a5fd" font-weight="700">GitHub Yearly Contributions</text>
-                ${card(years[0], counts[0], 0)}
-                ${card(years[1], counts[1], 1)}
-                ${card(years[2], counts[2], 2)}
+                <rect x="0" y="0" width="920" height="320" rx="20" fill="url(#bg)" />
+
+                <rect x="30" y="55" width="460" height="240" rx="18" fill="url(#card)" />
+                <text x="260" y="92" text-anchor="middle" font-size="22" font-family="Segoe UI, Arial, sans-serif" fill="#70a5fd" font-weight="700">Yearly Contributions</text>
+                ${yearCard(years[0], counts[0], 0)}
+                ${yearCard(years[1], counts[1], 1)}
+                ${yearCard(years[2], counts[2], 2)}
+
+                <rect x="510" y="55" width="380" height="240" rx="18" fill="url(#card)" />
+                <text x="700" y="92" text-anchor="middle" font-size="22" font-family="Segoe UI, Arial, sans-serif" fill="#70a5fd" font-weight="700">Streak</text>
+                <text x="700" y="152" text-anchor="middle" font-size="56" font-family="Segoe UI, Arial, sans-serif" fill="#c792ea" font-weight="800">${currentStreak}</text>
+                <text x="700" y="184" text-anchor="middle" font-size="22" font-family="Segoe UI, Arial, sans-serif" fill="#38bdae">current days</text>
+                <text x="700" y="238" text-anchor="middle" font-size="42" font-family="Segoe UI, Arial, sans-serif" fill="#70a5fd" font-weight="700">${longestStreak}</text>
+                <text x="700" y="266" text-anchor="middle" font-size="20" font-family="Segoe UI, Arial, sans-serif" fill="#38bdae">longest days</text>
               </svg>
             `.trim();
 
