@@ -27,12 +27,7 @@
 
 ---
 
-## 📊 GitHub Stats
-
-<p align="center">
-  <img src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api?username=ashser004&show_icons=true&theme=tokyonight&hide_border=true&border_radius=10" width="48%" />
-  <img src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api/top-langs/?username=ashser004&layout=compact&theme=tokyonight&hide_border=true&border_radius=10" width="48%" />
-</p>
+## 📊 GitHub Activity
 
 <p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com?user=ashser004&theme=tokyonight&hide_border=true&border_radius=10" width="60%" />
