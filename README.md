@@ -10,17 +10,19 @@
 
 ## 🧑‍💻 About Me
 
-🎓 BTech Information Technology  
-💡 Love building apps & experimenting with ideas  
-🌱 Currently learning **Next.js, Firebase, Kotlin**  
-⚡ Debugging is my cardio 😄  
+```yaml
+🎓 Education: BTech Information Technology
+💡 Passion: Building apps & experimenting with ideas
+🌱 Learning: Next.js, Firebase, Kotlin
+⚡ Fun fact: Debugging is my cardio 😄
+```
 
 ---
 
 ## 🛠 Tech Stack
 
 <p align="center">
-<img src="https://skillicons.dev/icons?i=cpp,python,js,nextjs,firebase,git,linux,sqlite" />
+  <img src="https://skillicons.dev/icons?i=cpp,python,js,nextjs,firebase,git,linux,sqlite&perline=8" />
 </p>
 
 ---
@@ -28,32 +30,50 @@
 ## 📊 GitHub Stats
 
 <p align="center">
-<img src="https://github-readme-stats.vercel.app/api?username=ashser004&show_icons=true&theme=tokyonight" width="48%" />
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ashser004&layout=compact&theme=tokyonight" width="48%" />
+  <img src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api?username=ashser004&show_icons=true&theme=tokyonight&hide_border=true&border_radius=10" width="48%" />
+  <img src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api/top-langs/?username=ashser004&layout=compact&theme=tokyonight&hide_border=true&border_radius=10" width="48%" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com?user=ashser004&theme=tokyonight&hide_border=true&border_radius=10" width="60%" />
 </p>
 
 ---
 
 ## 🚀 Current Focus
 
-- Full-stack projects  
-- AI powered apps  
-- DSA + C++  
-- Android development  
+<table align="center">
+  <tr>
+    <td>🔧 Full-stack projects</td>
+    <td>🤖 AI powered apps</td>
+  </tr>
+  <tr>
+    <td>📚 DSA + C++</td>
+    <td>📱 Android development</td>
+  </tr>
+</table>
 
 ---
 
 ## 🐍 Contribution Snake
 
-![snake](https://raw.githubusercontent.com/ashser004/ashser004/output/github-contribution-grid-snake.svg)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ashser004/ashser004/output/github-contribution-grid-snake.svg" alt="snake" />
+</p>
 
 ---
 
 ## 📫 Connect With Me
 
-- LinkedIn → https://linkedin.com/in/ashmith-babu-p  
-- Instagram → https://instagram.com/ash__mith_
+<p align="center">
+  <a href="https://linkedin.com/in/ashmith-babu-p">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+  <a href="https://instagram.com/ash__mith_">
+    <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
+  </a>
+</p>
 
 ---
 
-⭐ Star my repos if you like them — it motivates me!
+<p align="center">⭐ Star my repos if you like them — it motivates me!</p>
