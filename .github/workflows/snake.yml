@@ -12,11 +12,87 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
       - uses: Platane/snk@v3
         with:
           github_user_name: ashser004
           outputs: |
             dist/github-contribution-grid-snake.svg
+
+      - uses: actions/github-script@v7
+        env:
+          PROFILE_LOGIN: ashser004
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+
+            const login = process.env.PROFILE_LOGIN;
+            const now = new Date();
+            const currentYear = now.getUTCFullYear();
+            const years = [currentYear - 2, currentYear - 1, currentYear];
+
+            async function getYearCount(year) {
+              const from = `${year}-01-01T00:00:00Z`;
+              const to = year === currentYear
+                ? now.toISOString()
+                : `${year}-12-31T23:59:59Z`;
+
+              const query = `
+                query ($login: String!, $from: DateTime!, $to: DateTime!) {
+                  user(login: $login) {
+                    contributionsCollection(from: $from, to: $to) {
+                      contributionCalendar {
+                        totalContributions
+                      }
+                    }
+                  }
+                }
+              `;
+
+              const response = await github.graphql(query, { login, from, to });
+              return response.user.contributionsCollection.contributionCalendar.totalContributions;
+            }
+
+            const counts = [];
+            for (const year of years) {
+              counts.push(await getYearCount(year));
+            }
+
+            const card = (year, count, index) => {
+              const begin = `${index * 4}s`;
+              return `
+                <g opacity="0">
+                  <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.08;0.30;0.38;1" dur="12s" begin="${begin}" repeatCount="indefinite" />
+                  <text x="450" y="90" text-anchor="middle" font-size="44" font-family="Segoe UI, Arial, sans-serif" fill="#70a5fd" font-weight="700">${year}</text>
+                  <text x="450" y="160" text-anchor="middle" font-size="74" font-family="Segoe UI, Arial, sans-serif" fill="#c792ea" font-weight="800">${count}</text>
+                  <text x="450" y="215" text-anchor="middle" font-size="28" font-family="Segoe UI, Arial, sans-serif" fill="#38bdae">contributions</text>
+                </g>
+              `;
+            };
+
+            const svg = `
+              <svg xmlns="http://www.w3.org/2000/svg" width="900" height="280" viewBox="0 0 900 280" role="img" aria-labelledby="title desc">
+                <title id="title">Yearly GitHub Contributions</title>
+                <desc id="desc">Animated yearly contribution totals for ${login}</desc>
+                <defs>
+                  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#1a1b27" />
+                    <stop offset="100%" stop-color="#0f111a" />
+                  </linearGradient>
+                </defs>
+                <rect x="0" y="0" width="900" height="280" rx="20" fill="url(#bg)" />
+                <text x="450" y="42" text-anchor="middle" font-size="26" font-family="Segoe UI, Arial, sans-serif" fill="#70a5fd" font-weight="700">GitHub Yearly Contributions</text>
+                ${card(years[0], counts[0], 0)}
+                ${card(years[1], counts[1], 1)}
+                ${card(years[2], counts[2], 2)}
+              </svg>
+            `.trim();
+
+            fs.mkdirSync('dist', { recursive: true });
+            fs.writeFileSync('dist/yearly-contributions.svg', svg);
+
       - uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: output

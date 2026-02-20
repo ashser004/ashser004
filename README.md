@@ -30,7 +30,7 @@
 ## 📊 GitHub Activity
 
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com?user=ashser004&theme=tokyonight&hide_border=true&border_radius=10" width="60%" />
+  <img src="https://raw.githubusercontent.com/ashser004/ashser004/output/yearly-contributions.svg" width="90%" alt="Yearly contributions" />
 </p>
 
 ---
