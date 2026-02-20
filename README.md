@@ -45,7 +45,7 @@
 
 ## 🐍 Contribution Snake
 
-![snake](https://raw.githubusercontent.com/ashser004/ashser004/output/dist/github-contribution-grid-snake.svg)
+![snake](https://raw.githubusercontent.com/ashser004/ashser004/output/github-contribution-grid-snake.svg)
 
 ---
 
