@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="320" viewBox="0 0 920 320" role="img" aria-labelledby="title desc">
+    <title id="title">GitHub activity summary</title>
+    <desc id="desc">Animated yearly contribution totals and streak statistics for ashser004</desc>
+    <defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#1a1b27" />
+        <stop offset="100%" stop-color="#0f111a" />
+      </linearGradient>
+      <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#1f2233" />
+        <stop offset="100%" stop-color="#161b2e" />
+      </linearGradient>
+    </defs>
+    <rect x="0" y="0" width="920" height="320" rx="20" fill="url(#bg)" />
+
+    <rect x="30" y="55" width="460" height="240" rx="18" fill="url(#card)" />
+    <text x="260" y="92" text-anchor="middle" font-size="22" font-family="Segoe UI, Arial, sans-serif" fill="#70a5fd" font-weight="700">Yearly Contributions</text>
+    
+    <g visibility="hidden">
+      <animate attributeName="visibility" values="hidden;visible;visible;hidden" keyTimes="0;0.001;0.333;0.334" calcMode="discrete" dur="12s" begin="0s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="24 0;0 0;0 0;-24 0" keyTimes="0;0.1;0.9;1" dur="4s" begin="0s" repeatCount="indefinite" />
+      <text x="260" y="140" text-anchor="middle" font-size="44" font-family="Segoe UI, Arial, sans-serif" fill="#70a5fd" font-weight="700">2024</text>
+      <text x="260" y="210" text-anchor="middle" font-size="74" font-family="Segoe UI, Arial, sans-serif" fill="#c792ea" font-weight="800">6</text>
+      <text x="260" y="252" text-anchor="middle" font-size="26" font-family="Segoe UI, Arial, sans-serif" fill="#38bdae">contributions</text>
+    </g>
+  
+    
+    <g visibility="hidden">
+      <animate attributeName="visibility" values="hidden;visible;visible;hidden" keyTimes="0;0.001;0.333;0.334" calcMode="discrete" dur="12s" begin="4s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="24 0;0 0;0 0;-24 0" keyTimes="0;0.1;0.9;1" dur="4s" begin="4s" repeatCount="indefinite" />
+      <text x="260" y="140" text-anchor="middle" font-size="44" font-family="Segoe UI, Arial, sans-serif" fill="#70a5fd" font-weight="700">2025</text>
+      <text x="260" y="210" text-anchor="middle" font-size="74" font-family="Segoe UI, Arial, sans-serif" fill="#c792ea" font-weight="800">157</text>
+      <text x="260" y="252" text-anchor="middle" font-size="26" font-family="Segoe UI, Arial, sans-serif" fill="#38bdae">contributions</text>
+    </g>
+  
+    
+    <g visibility="hidden">
+      <animate attributeName="visibility" values="hidden;visible;visible;hidden" keyTimes="0;0.001;0.333;0.334" calcMode="discrete" dur="12s" begin="8s" repeatCount="indefinite" />
+      <animateTransform attributeName="transform" type="translate" values="24 0;0 0;0 0;-24 0" keyTimes="0;0.1;0.9;1" dur="4s" begin="8s" repeatCount="indefinite" />
+      <text x="260" y="140" text-anchor="middle" font-size="44" font-family="Segoe UI, Arial, sans-serif" fill="#70a5fd" font-weight="700">2026</text>
+      <text x="260" y="210" text-anchor="middle" font-size="74" font-family="Segoe UI, Arial, sans-serif" fill="#c792ea" font-weight="800">186</text>
+      <text x="260" y="252" text-anchor="middle" font-size="26" font-family="Segoe UI, Arial, sans-serif" fill="#38bdae">contributions</text>
+    </g>
+  
+
+    <rect x="510" y="55" width="380" height="240" rx="18" fill="url(#card)" />
+    <text x="700" y="92" text-anchor="middle" font-size="22" font-family="Segoe UI, Arial, sans-serif" fill="#70a5fd" font-weight="700">Streak</text>
+    <text x="700" y="152" text-anchor="middle" font-size="56" font-family="Segoe UI, Arial, sans-serif" fill="#c792ea" font-weight="800">0</text>
+    <text x="700" y="184" text-anchor="middle" font-size="22" font-family="Segoe UI, Arial, sans-serif" fill="#38bdae">current days</text>
+    <text x="700" y="238" text-anchor="middle" font-size="42" font-family="Segoe UI, Arial, sans-serif" fill="#70a5fd" font-weight="700">10</text>
+    <text x="700" y="266" text-anchor="middle" font-size="20" font-family="Segoe UI, Arial, sans-serif" fill="#38bdae">longest days</text>
+  </svg>
