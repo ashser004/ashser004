@@ -1,20 +1,17 @@
 <h1 align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=28&pause=1000&color=00F7FF&center=true&vCenter=true&width=600&lines=Hi+I'm+Ashmith+👋;BTech+IT+Student;Full-Stack+%26+AI+Developer;Building+Cool+Things+🚀" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=28&pause=1000&color=00F7FF&center=true&vCenter=true&width=600&lines=Hi+I'm+Ashmith+👋;BTech+IT+Student;Full-Stack+%26+Android+Developer;Building+Cool+Things!!" />
 </h1>
 
+## 🧑‍💻 About Me
 <p align="center">
   <img src="https://komarev.com/ghpvc/?username=ashser004&style=flat-square&color=blue" />
 </p>
 
----
-
-## 🧑‍💻 About Me
-
 ```yaml
-🎓 Education: BTech Information Technology
-💡 Passion: Building apps & experimenting with ideas
-🌱 Learning: Next.js, Firebase, Kotlin
-⚡ Fun fact: Debugging is my cardio 😄
+• Education: BTech Information Technology
+• Passion: Building apps & experimenting with ideas
+• Learning: Next.js, Firebase, Kotlin & AI
+• Fun fact: Debugging is my cardio 😄
 ```
 
 ---
@@ -22,7 +19,7 @@
 ## 🛠 Tech Stack
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=cpp,python,js,nextjs,firebase,git,linux,sqlite&perline=8" />
+  <img src="https://skillicons.dev/icons?i=cpp,python,kotlin,js,nodejs,nextjs,firebase,cloudflare,git,github,linux&perline=11" />
 </p>
 
 ---
@@ -30,7 +27,7 @@
 ## 📊 GitHub Activity
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ashser004/ashser004/output/yearly-contributions.svg" width="90%" alt="Yearly contributions" />
+  <img src="https://raw.githubusercontent.com/ashser004/ashser004/output/yearly-contributions.svg" width="50%" height=50% alt="Yearly contributions" />
 </p>
 
 ---
@@ -39,24 +36,12 @@
 
 <table align="center">
   <tr>
-    <td>🔧 Full-stack projects</td>
-    <td>🤖 AI powered apps</td>
-  </tr>
-  <tr>
-    <td>📚 DSA + C++</td>
-    <td>📱 Android development</td>
+    <td>▸ Full-stack projects</td>
+    <td>▸ AI powered apps</td>
+    <td>▸ Data Structures & Algorithms (C++)</td>
+    <td>▸ Android development</td>
   </tr>
 </table>
-
----
-
-## 🐍 Contribution Snake
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ashser004/ashser004/output/github-contribution-grid-snake-dark.svg" alt="snake" />
-</p>
-
----
 
 ## 📫 Connect With Me
 
