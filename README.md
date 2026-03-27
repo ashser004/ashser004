@@ -1,10 +1,11 @@
-<h1 align="center">
+<div align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=28&pause=1000&color=00F7FF&center=true&vCenter=true&width=600&lines=Hi+I'm+Ashmith+👋;BTech+IT+Student;Full-Stack+%26+Android+Developer;Building+Cool+Things!!" />
-</h1>
+</div>
+<img src="https://res.cloudinary.com/dt3siqq6q/image/upload/v1774598755/github_ltrrsu.gif" width="1100"/>
 
 ## 🧑‍💻 About Me
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=ashser004&style=flat-square&color=blue" />
+  <img src="https://komarev.com/ghpvc/?username=ashser004&style=flat-square&color=blueviolet" />
 </p>
 
 ```yaml
@@ -14,7 +15,7 @@
 • Fun fact: Debugging is my cardio 😄
 ```
 
----
+<img src="https://res.cloudinary.com/dt3siqq6q/image/upload/v1774598755/github_ltrrsu.gif" width="1100"/>
 
 ## 🛠 Tech Stack
 
@@ -22,7 +23,7 @@
   <img src="https://skillicons.dev/icons?i=cpp,python,kotlin,js,nodejs,nextjs,firebase,cloudflare,git,github,linux&perline=11" />
 </p>
 
----
+<img src="https://res.cloudinary.com/dt3siqq6q/image/upload/v1774598755/github_ltrrsu.gif" width="1100"/>
 
 ## 📊 GitHub Activity
 
@@ -30,7 +31,7 @@
   <img src="https://raw.githubusercontent.com/ashser004/ashser004/output/yearly-contributions.svg" width="50%" height=50% alt="Yearly contributions" />
 </p>
 
----
+<img src="https://res.cloudinary.com/dt3siqq6q/image/upload/v1774598755/github_ltrrsu.gif" width="1100"/>
 
 ## 🚀 Current Focus
 
@@ -54,6 +55,6 @@
   </a>
 </p>
 
----
+<img src="https://res.cloudinary.com/dt3siqq6q/image/upload/v1774598755/github_ltrrsu.gif" width="1100"/>
 
 <p align="center">⭐ Star my repos if you like them — it motivates me!</p>
