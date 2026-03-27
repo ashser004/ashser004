@@ -50,6 +50,7 @@
   <a href="https://www.linkedin.com/in/ashmith-babu-p-s-15aa57329">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
   </a>
+  &nbsp;&nbsp;&nbsp;
   <a href="https://www.instagram.com/ash__.mith__/">
     <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
   </a>
