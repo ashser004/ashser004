@@ -20,7 +20,7 @@
 ## 🛠 Tech Stack
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=cpp,python,kotlin,js,nodejs,nextjs,firebase,cloudflare,git,github,linux&perline=11" />
+  <img src="https://skillicons.dev/icons?i=cpp,python,kotlin,nodejs,nextjs,firebase,supabase,cloudflare,git,github,linux&perline=12" />
 </p>
 
 <img src="https://res.cloudinary.com/dt3siqq6q/image/upload/v1774598755/github_ltrrsu.gif" width="1100"/>
